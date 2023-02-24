@@ -1,0 +1,39 @@
+{
+  "short_name": "PassVault",
+  "name": "PassVault",
+  "description": "Passwords Remembered for you - A password generator and vault you can trust",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "Launch PassVault"
+  },
+  "permissions": [
+    "activeTab",
+    "clipboardRead",
+    "clipboardWrite",
+    "tabs",
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "./static/js/content.js"
+      ]
+    }
+  ],
+  "icons": {
+    "16": "logo192.png",
+    "48": "logo512.png"
+  }
+}
